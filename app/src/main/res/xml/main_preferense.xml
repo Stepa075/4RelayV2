@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/settings"
+        app:icon="@drawable/ic_settings_bottom_menu">
+
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="Default v"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Addres of server SmartHouse"
+            app:key="server_s_h" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="Def"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:title="Edit text pref"
+            app:key="edit_pref" />
+        <ListPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="5000"
+            android:title="@string/update_time_preference"
+            app:dialogIcon="@drawable/ic_update_time"
+            app:entries="@array/loc_time_update_name"
+            app:entryValues="@array/loc_time_update_value"
+            app:icon="@drawable/ic_update_time"
+            app:key="update_time_key"
+            app:summary="@string/update_time_preference_summary" />
+        <ListPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="#FFCD0C32"
+            android:title="@string/color"
+            app:entries="@array/update_color_name"
+            app:entryValues="@array/update_color_value"
+            app:icon="@drawable/ic_circle"
+            app:key="update_color_key"
+            app:summary="@string/color_summary" />
+        <SwitchPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="false"
+            android:title="Switch preference" />
+    </PreferenceCategory>
+</PreferenceScreen>
