@@ -11,19 +11,21 @@
         <EditTextPreference
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:defaultValue="Default v"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="Addres of server SmartHouse"
-            app:key="server_s_h" />
+            android:title="@string/address_for_server_smarthouse"
+            app:dialogIcon="@drawable/ic_link"
+            app:icon="@drawable/ic_link"
+            app:key="key_server_smarthouse" />
         <EditTextPreference
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:defaultValue="Def"
             android:selectAllOnFocus="false"
             android:singleLine="true"
-            android:title="Edit text pref"
-            app:key="edit_pref" />
+            android:title="@string/address_for_four_relay"
+            app:dialogIcon="@drawable/ic_link"
+            app:icon="@drawable/ic_link"
+            app:key="key_server_4relay" />
         <ListPreference
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,12 +35,12 @@
             app:entries="@array/loc_time_update_name"
             app:entryValues="@array/loc_time_update_value"
             app:icon="@drawable/ic_update_time"
-            app:key="update_time_key"
+            app:key="key_update_time"
             app:summary="@string/update_time_preference_summary" />
         <ListPreference
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:defaultValue="#FFCD0C32"
+            android:defaultValue="#FF0D329E"
             android:title="@string/color"
             app:entries="@array/update_color_name"
             app:entryValues="@array/update_color_value"
@@ -49,6 +51,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:defaultValue="false"
-            android:title="Switch preference" />
+            android:title="@string/on_response_mode"
+            app:disableDependentsState="false"
+            app:icon="@drawable/ic_response_mode"
+            app:key="key_response_mode" />
+        <ListPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="5000"
+            android:title="@string/update_time_for_response_mode_preference"
+            app:dependency="key_response_mode"
+            app:dialogIcon="@drawable/ic_update_time"
+            app:entries="@array/loc_time_update_name"
+            app:entryValues="@array/loc_time_update_value"
+            app:icon="@drawable/ic_update_time"
+            app:key="key_update_time_response"
+            app:summary="@string/update_time_response_summary" />
     </PreferenceCategory>
 </PreferenceScreen>

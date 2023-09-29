@@ -18,7 +18,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun init() {
-        updateTimePref = findPreference("update_time_key")!!
+        updateTimePref = findPreference("key_update_time")!!
         updateColorPref = findPreference("update_color_key")!!
         val changeListener = onChangeListener()
         updateTimePref.onPreferenceChangeListener = changeListener
@@ -29,7 +29,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private fun onChangeListener(): OnPreferenceChangeListener {
         return Preference.OnPreferenceChangeListener { pref, value ->
             when (pref.key) {
-                "update_time_key" -> onTimeChange(value.toString())
+                "key_update_time" -> onTimeChange(value.toString())
                 "update_color_key" -> pref.icon?.setTint((Color.parseColor(value.toString())))
             }
 
@@ -50,7 +50,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val valueArray = resources.getStringArray(R.array.loc_time_update_value)
         val title = updateTimePref.title
         updateTimePref.title =
-            "$title: ${nameArray[valueArray.indexOf(pref?.getString("update_time_key", "5000"))]}"
+            "$title: ${nameArray[valueArray.indexOf(pref?.getString("key_update_time", "5000"))]}"
 
         val color = pref?.getString("update_color_key", "#FFCD0C32")
         updateColorPref.icon?.setTint(Color.parseColor(color))

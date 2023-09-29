@@ -1,15 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MainFragment">
+    android:background="@color/background_color">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="Main Fragment" />
-</FrameLayout>
+        android:text="4 RELAY SECTION"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/br2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:backgroundTint="#03A9F4"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="OFF"
+        app:layout_constraintEnd_toStartOf="@+id/br3"
+        app:layout_constraintStart_toEndOf="@+id/br1"
+        app:layout_constraintTop_toBottomOf="@+id/tv1" />
+
+    <Button
+        android:id="@+id/br4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:backgroundTint="#03A9F4"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="OFF"
+        app:layout_constraintEnd_toEndOf="@+id/tv1"
+        app:layout_constraintStart_toEndOf="@+id/br3"
+        app:layout_constraintTop_toBottomOf="@+id/tv1" />
+
+    <Button
+        android:id="@+id/br1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:backgroundTint="#03A9F4"
+        android:ellipsize="none"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="OFF"
+        app:layout_constraintEnd_toStartOf="@+id/br2"
+        app:layout_constraintStart_toStartOf="@+id/tv1"
+        app:layout_constraintTop_toBottomOf="@+id/tv1" />
+
+    <Button
+        android:id="@+id/br3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:backgroundTint="#03A9F4"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="OFF"
+        app:layout_constraintEnd_toStartOf="@+id/br4"
+        app:layout_constraintStart_toEndOf="@+id/br2"
+        app:layout_constraintTop_toBottomOf="@+id/tv1" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="Relay1"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/br1"
+        app:layout_constraintStart_toStartOf="@+id/br1"
+        app:layout_constraintTop_toBottomOf="@+id/br1" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="Relay2"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/br2"
+        app:layout_constraintStart_toStartOf="@+id/br2"
+        app:layout_constraintTop_toBottomOf="@+id/br2" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="Relay3"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/br3"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="@+id/br3"
+        app:layout_constraintTop_toBottomOf="@+id/br3" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="Relay4"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/br4"
+        app:layout_constraintHorizontal_bias="0.363"
+        app:layout_constraintStart_toStartOf="@+id/br4"
+        app:layout_constraintTop_toBottomOf="@+id/br4" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/non_accent_black"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

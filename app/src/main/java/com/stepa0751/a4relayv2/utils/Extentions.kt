@@ -1,5 +1,6 @@
 package com.stepa0751.a4relayv2.utils
 
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -32,4 +33,20 @@ fun Fragment.showToast(s: String) {
 
 fun AppCompatActivity.showToast(s: String) {
     Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
+}
+
+fun Fragment.showLog(s:String, v:String){
+    Log.d(s, v)
+}
+
+fun AppCompatActivity.showLog(s:String, v:String){
+    Log.d(s, v)
+}
+
+fun Fragment.myLog(v:String){
+    Log.d("MyLog", v)
+}
+
+fun AppCompatActivity.myLog(v:String){
+    Log.d("MyLog", v)
 }

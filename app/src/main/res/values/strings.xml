@@ -5,9 +5,14 @@
     <string name="settings">Settings</string>
     <string name="location">Location</string>
     <string name="update_time_preference">Update time</string>
-    <string name="update_time_preference_summary">Update time check server</string>
+    <string name="update_time_preference_summary">Update time check server Smarthouse</string>
+    <string name="update_time_response_summary">Update time check respnse</string>
+    <string name="address_for_server_smarthouse">Server address Smarthouse</string>
+    <string name="address_for_four_relay">Server address four relay</string>
+    <string name="on_response_mode">On response mode?</string>
+    <string name="update_time_for_response_mode_preference">Update time for response mode</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="color">Color</string>
-    <string name="color_summary">Choose color</string>
+    <string name="color_summary">Choose color gamma</string>
 </resources>
