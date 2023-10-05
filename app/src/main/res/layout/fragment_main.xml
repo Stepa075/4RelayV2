@@ -15,7 +15,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="4 RELAY SECTION"
+        android:text="@string/_4_relay_section"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
         android:backgroundTint="#03A9F4"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
-        android:text="OFF"
+        android:text="@string/off"
         app:layout_constraintEnd_toStartOf="@+id/br3"
         app:layout_constraintStart_toEndOf="@+id/br1"
         app:layout_constraintTop_toBottomOf="@+id/tv1" />
@@ -49,7 +49,7 @@
         android:backgroundTint="#03A9F4"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
-        android:text="OFF"
+        android:text="@string/off"
         app:layout_constraintEnd_toEndOf="@+id/tv1"
         app:layout_constraintStart_toEndOf="@+id/br3"
         app:layout_constraintTop_toBottomOf="@+id/tv1" />
@@ -66,7 +66,7 @@
         android:ellipsize="none"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
-        android:text="OFF"
+        android:text="@string/off"
         app:layout_constraintEnd_toStartOf="@+id/br2"
         app:layout_constraintStart_toStartOf="@+id/tv1"
         app:layout_constraintTop_toBottomOf="@+id/tv1" />
@@ -82,7 +82,7 @@
         android:backgroundTint="#03A9F4"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
-        android:text="OFF"
+        android:text="@string/off"
         app:layout_constraintEnd_toStartOf="@+id/br4"
         app:layout_constraintStart_toEndOf="@+id/br2"
         app:layout_constraintTop_toBottomOf="@+id/tv1" />
@@ -94,7 +94,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="Relay1"
+        android:text="@string/relay1"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/br1"
@@ -108,7 +108,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="Relay2"
+        android:text="@string/relay2"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/br2"
@@ -122,7 +122,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="Relay3"
+        android:text="@string/relay3"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/br3"
@@ -137,7 +137,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="Relay4"
+        android:text="@string/relay4"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/br4"
@@ -145,17 +145,29 @@
         app:layout_constraintStart_toStartOf="@+id/br4"
         app:layout_constraintTop_toBottomOf="@+id/br4" />
 
+    <TextView
+        android:id="@+id/tvResponse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:textColor="#201D1D"
+        android:textColorHint="#292525"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@color/non_accent_black"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/textView11"
         app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/tvResponse" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

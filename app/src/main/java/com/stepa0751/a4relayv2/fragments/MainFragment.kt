@@ -12,6 +12,8 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.stepa0751.a4relayv2.R
 import com.stepa0751.a4relayv2.databinding.FragmentMainBinding
+import com.stepa0751.a4relayv2.utils.myLog
+import com.stepa0751.a4relayv2.utils.showLog
 
 
 class MainFragment : Fragment() {
@@ -24,13 +26,14 @@ class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+        ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.d("MyLog", "onViewCreated")
+        myLog("onViewCreated")
 //        Этой строкой обновляем данные во вьюМодел
  //       homeViewModel.message.value = binding.br1.text.toString()
 //        Этой строкой принимаем данные из вьюМодел
@@ -84,9 +87,11 @@ class MainFragment : Fragment() {
             val sRequest = StringRequest(
                 Request.Method.GET,
                 url, { response ->
-                    Log.d("MyLog", "All OK! GPIO$id request: $response")
+                    Log.d("MyLog", "All OK! GPIO$id: $response")
+                    binding.tvResponse.text = "All OK! GPIO$id: $response"
                 },
-                { Log.d("MyLog", "Error request: $it") }
+                { Log.d("MyLog", "Error request0: $it")
+                    binding.tvResponse.text = it.toString()}
             )
             queue.add(sRequest)
             when (id) {
@@ -94,7 +99,8 @@ class MainFragment : Fragment() {
                 5 -> id2 = !id2
                 12 -> id3 = !id3
                 14 -> id4 = !id4
-                else -> Log.d("MyLog", "Error request: $id")
+                else -> Log.d("MyLog", "Error request1: $id"
+                )
             }
             when (id) {
                 4 -> {
@@ -117,7 +123,7 @@ class MainFragment : Fragment() {
                         "ON"; binding.br4.setBackgroundColor(resources.getColor(R.color.color_backg_button))
                 }
 
-                else -> Log.d("MyLog", "Error request: $id")
+                else -> Log.d("MyLog", "Error request2: $id")
             }
 
         } else {
@@ -126,9 +132,11 @@ class MainFragment : Fragment() {
             val sRequest = StringRequest(
                 Request.Method.GET,
                 url, { response ->
-                    Log.d("MyLog", "All OK! request: $response")
+                    Log.d("MyLog", "All OK! GPIO$id: $response")
+                    binding.tvResponse.text = "All OK! GPIO$id: $response"
                 },
-                { Log.d("MyLog", "Error request: $it") }
+                { Log.d("MyLog", "Error request3: $it")
+                    binding.tvResponse.text = it.toString()}
             )
             queue.add(sRequest)
             when (id) {
@@ -136,7 +144,10 @@ class MainFragment : Fragment() {
                 5 -> id2 = !id2
                 12 -> id3 = !id3
                 14 -> id4 = !id4
-                else -> Log.d("MyLog", "Error request: $id")
+                else -> {
+                    Log.d("MyLog", "Error request4: $id")
+                    binding.tvResponse.text = id.toString()
+                }
             }
             when (id) {
                 4 -> {
@@ -159,7 +170,7 @@ class MainFragment : Fragment() {
                         "OFF"; binding.br4.setBackgroundColor(resources.getColor(R.color.background_tint))
                 }
 
-                else -> Log.d("MyLog", "Error request: $id")
+                else -> Log.d("MyLog", "Error request5: $id")
             }
         }
 

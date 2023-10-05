@@ -15,4 +15,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="color">Color</string>
     <string name="color_summary">Choose color gamma</string>
+    <string name="_4_relay_section">4 RELAY SECTION</string>
+    <string name="relay1">Relay1</string>
+    <string name="relay2">Relay2</string>
+    <string name="relay3">Relay3</string>
+    <string name="relay4">Relay4</string>
+    <string name="off">OFF</string>
 </resources>
