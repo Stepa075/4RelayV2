@@ -88,7 +88,8 @@ class MainFragment : Fragment() {
                 Request.Method.GET,
                 url, { response ->
                     Log.d("MyLog", "All OK! GPIO$id: $response")
-                    binding.tvResponse.text = "All OK! GPIO$id: $response"
+                    binding.tvResponse.text = "All OK! GPIO$id: ${
+                        response.substringAfter("<html>").substringBefore("<")}"
                 },
                 { Log.d("MyLog", "Error request0: $it")
                     binding.tvResponse.text = it.toString()}
@@ -132,8 +133,10 @@ class MainFragment : Fragment() {
             val sRequest = StringRequest(
                 Request.Method.GET,
                 url, { response ->
-                    Log.d("MyLog", "All OK! GPIO$id: $response")
-                    binding.tvResponse.text = "All OK! GPIO$id: $response"
+
+                    Log.d("MyLog", "All OK! GPIO$id: ${response}")
+                    binding.tvResponse.text = "All OK! GPIO$id: ${
+                        response.substringAfter("<html>").substringBefore("<")}"
                 },
                 { Log.d("MyLog", "Error request3: $it")
                     binding.tvResponse.text = it.toString()}
