@@ -25,7 +25,8 @@ fun AppCompatActivity.openFragment(f: Fragment) {
             android.R.anim.fade_in,
             android.R.anim.fade_out
         ).replace(R.id.placeHolder, f).commit()
-}
+    
+    }
 
 fun Fragment.showToast(s: String) {
     Toast.makeText(activity, s, Toast.LENGTH_SHORT).show()
@@ -35,18 +36,10 @@ fun AppCompatActivity.showToast(s: String) {
     Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
 }
 
-fun Fragment.showLog(s:String, v:String){
-    Log.d(s, v)
-}
-
-fun AppCompatActivity.showLog(s:String, v:String){
-    Log.d(s, v)
-}
-
 fun Fragment.myLog(v:String){
     Log.d("MyLog", v)
 }
 
-fun AppCompatActivity.myLog(v:String){
+fun AppCompatActivity.myMyLog(v:String){
     Log.d("MyLog", v)
 }

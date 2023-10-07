@@ -1,23 +1,30 @@
 package com.stepa0751.a4relayv2.fragments
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.stepa0751.a4relayv2.R
 import com.stepa0751.a4relayv2.databinding.FragmentMainBinding
-import com.stepa0751.a4relayv2.utils.myLog
-import com.stepa0751.a4relayv2.utils.showLog
+import com.stepa0751.a4relayv2.models.DataModel
+import com.stepa0751.a4relayv2.models.MainViewModel
+
 
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
+
+    lateinit var mViewModel: MainViewModel
+
     //    private var isServiceRunning = false
     private var id1 = false
     private var id2 = false
@@ -26,23 +33,56 @@ class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-        ): View {
+    ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        myLog("onViewCreated")
-//        Этой строкой обновляем данные во вьюМодел
- //       homeViewModel.message.value = binding.br1.text.toString()
-//        Этой строкой принимаем данные из вьюМодел
-//        homeViewModel.message.observe(viewLifecycleOwner) {
-//            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-//            binding.br1.text = it.toString()
-//        }
+
+        mViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        setView()
         setOnClicks()
         onClicks()
+
+    }
+
+    @SuppressLint("FragmentLiveDataObserve")
+    fun setView() {
+        mViewModel.dataLiveData.observe(this, Observer {
+            id1 = it.one
+            id2 = it.two
+            id3 = it.free
+            id4 = it.four
+            binding.br1.text = it.br1
+            binding.br2.text = it.br2
+            binding.br3.text = it.br3
+            binding.br4.text = it.br4
+            binding.tvResponse.text = it.string
+            if(binding.br1.text == "ON")  binding.br1.setBackgroundColor(resources.getColor(R.color.color_backg_button))
+            if(binding.br2.text == "ON")  binding.br2.setBackgroundColor(resources.getColor(R.color.color_backg_button))
+            if(binding.br3.text == "ON")  binding.br3.setBackgroundColor(resources.getColor(R.color.color_backg_button))
+            if(binding.br4.text == "ON")  binding.br4.setBackgroundColor(resources.getColor(R.color.color_backg_button))
+
+
+
+        })
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        val str = binding.tvResponse.text.toString()
+        val strbr1 = binding.br1.text.toString()
+        val strbr2 = binding.br2.text.toString()
+        val strbr3 = binding.br3.text.toString()
+        val strbr4 = binding.br4.text.toString()
+
+
+        val items = DataModel(id1, id2, id3, id4, str, strbr1, strbr2, strbr3, strbr4)
+        mViewModel.dataLiveData.value = items
     }
 
     //  Функция инициализации слушателя нажатий для ВСЕГО ВЬЮ
@@ -89,10 +129,13 @@ class MainFragment : Fragment() {
                 url, { response ->
                     Log.d("MyLog", "All OK! GPIO$id: $response")
                     binding.tvResponse.text = "All OK! GPIO$id: ${
-                        response.substringAfter("<html>").substringBefore("<")}"
+                        response.substringAfter("<html>").substringBefore("<")
+                    }"
                 },
-                { Log.d("MyLog", "Error request0: $it")
-                    binding.tvResponse.text = it.toString()}
+                {
+                    Log.d("MyLog", "Error request0: $it")
+                    binding.tvResponse.text = it.toString()
+                }
             )
             queue.add(sRequest)
             when (id) {
@@ -100,7 +143,8 @@ class MainFragment : Fragment() {
                 5 -> id2 = !id2
                 12 -> id3 = !id3
                 14 -> id4 = !id4
-                else -> Log.d("MyLog", "Error request1: $id"
+                else -> Log.d(
+                    "MyLog", "Error request1: $id"
                 )
             }
             when (id) {
@@ -111,7 +155,7 @@ class MainFragment : Fragment() {
 
                 5 -> {
                     binding.br1.text =
-                        "ON";   binding.br1.setBackgroundColor(resources.getColor(R.color.color_backg_button))
+                        "ON"; binding.br1.setBackgroundColor(resources.getColor(R.color.color_backg_button))
                 }
 
                 12 -> {
@@ -136,10 +180,13 @@ class MainFragment : Fragment() {
 
                     Log.d("MyLog", "All OK! GPIO$id: ${response}")
                     binding.tvResponse.text = "All OK! GPIO$id: ${
-                        response.substringAfter("<html>").substringBefore("<")}"
+                        response.substringAfter("<html>").substringBefore("<")
+                    }"
                 },
-                { Log.d("MyLog", "Error request3: $it")
-                    binding.tvResponse.text = it.toString()}
+                {
+                    Log.d("MyLog", "Error request3: $it")
+                    binding.tvResponse.text = it.toString()
+                }
             )
             queue.add(sRequest)
             when (id) {
@@ -160,7 +207,7 @@ class MainFragment : Fragment() {
 
                 5 -> {
                     binding.br1.text =
-                        "OFF";  binding.br1.setBackgroundColor(resources.getColor(R.color.background_tint))
+                        "OFF"; binding.br1.setBackgroundColor(resources.getColor(R.color.background_tint))
                 }
 
                 12 -> {
@@ -177,15 +224,8 @@ class MainFragment : Fragment() {
             }
         }
 
-//        isServiceRunning = !isServiceRunning
+
     }
-
-
-
-
-
-
-
 
 
     companion object {
