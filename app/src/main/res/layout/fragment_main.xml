@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color">
+    android:background="@color/background_color"
+    android:textAlignment="center">
 
     <TextView
         android:id="@+id/tv1"
@@ -36,7 +37,7 @@
         android:text="@string/off"
         app:layout_constraintEnd_toStartOf="@+id/br3"
         app:layout_constraintStart_toEndOf="@+id/br1"
-        app:layout_constraintTop_toBottomOf="@+id/tv1" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_status_wifi" />
 
     <Button
         android:id="@+id/br4"
@@ -52,7 +53,7 @@
         android:text="@string/off"
         app:layout_constraintEnd_toEndOf="@+id/tv1"
         app:layout_constraintStart_toEndOf="@+id/br3"
-        app:layout_constraintTop_toBottomOf="@+id/tv1" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_status_wifi" />
 
     <Button
         android:id="@+id/br1"
@@ -69,7 +70,7 @@
         android:text="@string/off"
         app:layout_constraintEnd_toStartOf="@+id/br2"
         app:layout_constraintStart_toStartOf="@+id/tv1"
-        app:layout_constraintTop_toBottomOf="@+id/tv1" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_status_wifi" />
 
     <Button
         android:id="@+id/br3"
@@ -85,7 +86,7 @@
         android:text="@string/off"
         app:layout_constraintEnd_toStartOf="@+id/br4"
         app:layout_constraintStart_toEndOf="@+id/br2"
-        app:layout_constraintTop_toBottomOf="@+id/tv1" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_status_wifi" />
 
     <TextView
         android:id="@+id/textView8"
@@ -169,5 +170,17 @@
         app:layout_constraintEnd_toEndOf="@+id/textView11"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/tvResponse" />
+
+    <TextView
+        android:id="@+id/tv_status_wifi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="WIFI REMOTE STATUS IS:"
+        android:textColor="#050505"
+        app:layout_constraintEnd_toEndOf="@+id/tv1"
+        app:layout_constraintStart_toStartOf="@+id/tv1"
+        app:layout_constraintTop_toBottomOf="@+id/tv1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

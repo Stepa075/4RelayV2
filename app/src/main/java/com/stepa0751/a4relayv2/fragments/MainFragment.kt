@@ -1,7 +1,6 @@
 package com.stepa0751.a4relayv2.fragments
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,7 +16,7 @@ import com.stepa0751.a4relayv2.R
 import com.stepa0751.a4relayv2.databinding.FragmentMainBinding
 import com.stepa0751.a4relayv2.models.DataModel
 import com.stepa0751.a4relayv2.models.MainViewModel
-
+import com.stepa0751.a4relayv2.utils.myLog
 
 
 class MainFragment : Fragment() {
@@ -60,12 +59,11 @@ class MainFragment : Fragment() {
             binding.br3.text = it.br3
             binding.br4.text = it.br4
             binding.tvResponse.text = it.string
-            if(binding.br1.text == "ON")  binding.br1.setBackgroundColor(resources.getColor(R.color.color_backg_button))
-            if(binding.br2.text == "ON")  binding.br2.setBackgroundColor(resources.getColor(R.color.color_backg_button))
-            if(binding.br3.text == "ON")  binding.br3.setBackgroundColor(resources.getColor(R.color.color_backg_button))
-            if(binding.br4.text == "ON")  binding.br4.setBackgroundColor(resources.getColor(R.color.color_backg_button))
-
-
+            if (binding.br1.text == "ON") binding.br1.setBackgroundColor(resources.getColor(R.color.color_backg_button))
+            if (binding.br2.text == "ON") binding.br2.setBackgroundColor(resources.getColor(R.color.color_backg_button))
+            if (binding.br3.text == "ON") binding.br3.setBackgroundColor(resources.getColor(R.color.color_backg_button))
+            if (binding.br4.text == "ON") binding.br4.setBackgroundColor(resources.getColor(R.color.color_backg_button))
+            
 
         })
 
@@ -178,7 +176,7 @@ class MainFragment : Fragment() {
                 Request.Method.GET,
                 url, { response ->
 
-                    Log.d("MyLog", "All OK! GPIO$id: ${response}")
+                    Log.d("MyLog", "All OK! GPIO$id: $response")
                     binding.tvResponse.text = "All OK! GPIO$id: ${
                         response.substringAfter("<html>").substringBefore("<")
                     }"
