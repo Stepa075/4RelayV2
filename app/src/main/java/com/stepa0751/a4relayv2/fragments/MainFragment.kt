@@ -17,12 +17,15 @@ import com.stepa0751.a4relayv2.databinding.FragmentMainBinding
 import com.stepa0751.a4relayv2.models.DataModel
 import com.stepa0751.a4relayv2.models.MainViewModel
 import com.stepa0751.a4relayv2.utils.myLog
+import java.util.Timer
+import kotlin.concurrent.schedule
 
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
+    private val timer = Timer()
 
-    lateinit var mViewModel: MainViewModel
+    private lateinit var mViewModel: MainViewModel
 
     //    private var isServiceRunning = false
     private var id1 = false
@@ -44,6 +47,7 @@ class MainFragment : Fragment() {
         setView()
         setOnClicks()
         onClicks()
+        myTimer(timer)
 
     }
 
@@ -100,7 +104,6 @@ class MainFragment : Fragment() {
                 R.id.br1 -> startStopService(5)
                 R.id.br3 -> startStopService(12)
                 R.id.br4 -> startStopService(14)
-
             }
         }
     }
@@ -223,6 +226,35 @@ class MainFragment : Fragment() {
         }
 
 
+    }
+
+    private fun myTimer(timer: Timer){
+        timer.schedule(delay = 0, period = 10000){
+            testing()
+        }
+    }
+
+    private fun testing(){
+        val queue = Volley.newRequestQueue(context)
+        val url =
+            "http://192.168.1.16/test/1"
+        val sRequest = StringRequest(
+            Request.Method.GET,
+            url, { response ->
+                val z = response.substringAfter("<html>").substringBefore("<")
+                val y = z.replace("\r", "")
+                if (y == getString(R.string.connected)){
+                binding.tvStatusWifi.text = getString(R.string.wifi_remote_status_is_ok)
+                }
+                Log.d("MyLog", response)
+            },
+            {
+                binding.tvStatusWifi.text = getString(R.string.wifi_remote_status_is_no_connect)
+                Log.d("MyLog", "Error request3: $it")
+
+            }
+        )
+        queue.add(sRequest)
     }
 
 

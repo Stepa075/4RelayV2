@@ -21,4 +21,10 @@
     <string name="relay3">Relay3</string>
     <string name="relay4">Relay4</string>
     <string name="off">OFF</string>
+    <string name="web_remote_status_is_ok">WEB REMOTE STATUS IS: Ok!</string>
+    <string name="wifi_remote_status_is_ok">WIFI REMOTE STATUS IS: Ok!</string>
+    <string name="wifi_remote_status_is_no_connect">WIFI REMOTE STATUS IS: No connect!</string>
+    <string name="wifi_remote_status">WIFI REMOTE STATUS</string>
+    <string name="connected">Connected</string>
+    <string name="web_remote_status">WEB REMOTE STATUS</string>
 </resources>
