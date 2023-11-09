@@ -85,6 +85,7 @@ class MainFragment : Fragment() {
 
         val items = DataModel(id1, id2, id3, id4, str, strbr1, strbr2, strbr3, strbr4)
         mViewModel.dataLiveData.value = items
+        timer.cancel()
     }
 
     //  Функция инициализации слушателя нажатий для ВСЕГО ВЬЮ
