@@ -4,7 +4,16 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
+import com.android.volley.Request
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.stepa0751.a4relayv2.R
+import com.stepa0751.a4relayv2.models.MainViewModel
+import com.stepa0751.a4relayv2.models.TransferDataCurrent
+import com.stepa0751.a4relayv2.models.TransferDataLocal
+import org.json.JSONObject
 
 fun Fragment.openFragment(f: Fragment) {
     (activity as AppCompatActivity).supportFragmentManager
@@ -43,3 +52,8 @@ fun Fragment.myLog(v:String){
 fun AppCompatActivity.myMyLog(v:String){
     Log.d("MyLog", v)
 }
+
+
+
+
+

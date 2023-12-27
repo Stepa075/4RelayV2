@@ -4,13 +4,13 @@
     <string name="home_max">Homemax</string>
     <string name="settings">Settings</string>
     <string name="location">Location</string>
-    <string name="update_time_preference">Update time</string>
-    <string name="update_time_preference_summary">Update time check server Smarthouse</string>
-    <string name="update_time_response_summary">Update time check respnse</string>
-    <string name="address_for_server_smarthouse">Server address Smarthouse</string>
-    <string name="address_for_four_relay">Server address four relay</string>
+    <string name="update_time_preference">Local update time</string>
+    <string name="update_time_preference_summary">Update time ping local server Smarthouse</string>
+    <string name="update_time_response_summary">Update time ping internet host</string>
+    <string name="address_for_server_smarthouse">Local address for SmartHouse</string>
+    <string name="port_for_smarthouse">Port for SmartHouse</string>
     <string name="on_response_mode">On response mode?</string>
-    <string name="update_time_for_response_mode_preference">Update time for response mode</string>
+    <string name="update_time_for_response_mode_preference">Internet update time</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="color">Color</string>
@@ -22,9 +22,16 @@
     <string name="relay4">Relay4</string>
     <string name="off">OFF</string>
     <string name="web_remote_status_is_ok">WEB REMOTE STATUS IS: Ok!</string>
+    <string name="web_remote_status_is_no_connect">WEB REMOTE STATUS IS: No connect!</string>
     <string name="wifi_remote_status_is_ok">WIFI REMOTE STATUS IS: Ok!</string>
     <string name="wifi_remote_status_is_no_connect">WIFI REMOTE STATUS IS: No connect!</string>
     <string name="wifi_remote_status">WIFI REMOTE STATUS</string>
     <string name="connected">Connected</string>
     <string name="web_remote_status">WEB REMOTE STATUS</string>
+    <string name="tg_bot_token">TG Bot Token</string>
+    <string name="transmit_chat_id">Transmit Chat ID</string>
+    <string name="reception_chat_id">Reception Chat ID</string>
+    <string name="other_settings">OTHER SETTINGS</string>
+    <string name="internet_host_for_ping">Internet host for ping</string>
+    <string name="choose_host_or_address_for_ping">Choose host or address for ping</string>
 </resources>

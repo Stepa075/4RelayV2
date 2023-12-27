@@ -21,4 +21,23 @@
         <item>#FFCD0C32</item>
         <item>#FF000000</item>
     </string-array>
+    <string-array name="names_of_device">
+        <item>201 4 Channel switch</item>
+        <item>202 1 Channel switch</item>
+        <item>203 1 Channel power switch</item>
+        <item>204 Light sensor</item>
+        <item>205 Wheater sensor</item>
+        <item>206 Pump controller</item>
+    </string-array>
+    <string-array name="values_of_device">
+        <item>201</item>
+        <item>202</item>
+        <item>203</item>
+        <item>204</item>
+        <item>205</item>
+        <item>206</item>
+    </string-array>
+
+
+
 </resources>

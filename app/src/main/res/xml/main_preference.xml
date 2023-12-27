@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="GENERAL SETTINGS"
+        app:icon="@drawable/ic_settings_bottom_menu"
+        app:key="key_gen_cat">
+
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Token"
+            app:icon="@drawable/ic_token"
+            app:key="key_token" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Transmitting chat ID"
+            app:icon="@drawable/ic_chats_id"
+            app:key="key_transmitting" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Receiving  chat ID"
+            app:icon="@drawable/ic_chats_id"
+            app:key="key_receiving" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="192.168.1.200"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Local URL SmartHouse"
+            app:icon="@drawable/ic_id"
+            app:key="key_local_url_sh" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Local port SmartHouse"
+            app:icon="@drawable/ic_port"
+            app:key="key_local_port" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Update time ping local  to SmartHouse"
+            app:defaultValue="30000"
+            app:icon="@drawable/ic_update_time"
+            app:key="key_upd_time_local" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Update time ping WEB host"
+            app:defaultValue="30000"
+            app:icon="@drawable/ic_update_time"
+            app:key="key_upd_time_ping_web_host" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="8.8.8.8"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/choose_host_or_address_for_ping"
+            app:icon="@drawable/ic_id"
+            app:key="key_web_host" />
+        <ListPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:title="List preference"
+            app:entries="@array/loc_time_update_name"
+            app:entryValues="@array/loc_time_update_value"
+            app:icon="@drawable/ic_list_pref"
+            app:key="key_list" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="DEVICE SETTINGS"
+        app:icon="@drawable/ic_settings_bottom_menu"
+        app:key="key_cat_devices">
+
+        <MultiSelectListPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:title="List of devices and their codes"
+            app:entries="@array/names_of_device"
+            app:entryValues="@array/values_of_device"
+            app:icon="@drawable/ic_check_list"
+            app:key="key_multilist" />
+    </PreferenceCategory>
+</PreferenceScreen>

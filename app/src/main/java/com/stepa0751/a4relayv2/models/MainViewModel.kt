@@ -6,4 +6,7 @@ import androidx.lifecycle.ViewModel
 class MainViewModel : ViewModel(){
 
     val dataLiveData = MutableLiveData<DataModel>()
+    val dataTransferWeb = MutableLiveData<TransferData>()
+    val dataTransferLocal = MutableLiveData<TransferDataLocal>()
+    val dataCurrentDevice = MutableLiveData<TransferDataCurrent>()
 }

@@ -4,10 +4,6 @@
         android:icon="@drawable/ic_home_bottom_menu"
         android:id="@+id/id_home"
         android:orderInCategory="100"/>
-    <item android:title="@string/home_max"
-        android:icon="@drawable/ic_homemax_bottom_menu"
-        android:id="@+id/id_homemax"
-        android:orderInCategory="200"/>
     <item android:title="@string/settings"
         android:icon="@drawable/ic_settings_bottom_menu"
         android:id="@+id/id_settings"
