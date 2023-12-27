@@ -133,7 +133,7 @@ class MainFragment : Fragment() {
         }
     }
 
-    fun definePressedButtonLocal(number: Int) {
+    private fun definePressedButtonLocal(number: Int) {
         if (number == 1) {
             id1 = !id1
         } else if (number == 2) {
@@ -151,7 +151,7 @@ class MainFragment : Fragment() {
         changeButtonState()
     }
 
-    fun definePressedButtonWeb(number: Int) {
+    private fun definePressedButtonWeb(number: Int) {
         if (number == 1) {
             id1 = !id1
         } else if (number == 2) {
