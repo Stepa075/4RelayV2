@@ -15,6 +15,7 @@ import com.stepa0751.a4relayv2.fragments.SettingsFragment
 import com.stepa0751.a4relayv2.models.MainViewModel
 import com.stepa0751.a4relayv2.models.TransferData
 import com.stepa0751.a4relayv2.models.TransferDataLocal
+import com.stepa0751.a4relayv2.models.TransferReceivedData
 import com.stepa0751.a4relayv2.utils.openFragment
 import org.json.JSONObject
 import java.util.Timer
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mViewModel: MainViewModel
     private val timerWeb = Timer()
     private val timerLoc = Timer()
+    private val timerPool = Timer()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         onBottomNavClicks()
         myTimerWeb(timerWeb)
         myTimerLoc(timerLoc)
+        myTimerChannelPool(timerPool)
         openFragment(MainFragment.newInstance())
     }
 
@@ -71,6 +74,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun myTimerChannelPool(timerPool: Timer) {
+        val period = PreferenceManager.getDefaultSharedPreferences(this).
+        getString("key_upd_time_rec_channel_poll", "30000")
+        if (period != null) {
+            timerPool.schedule(delay = 0, period = period.toLong()) {
+                botGetData()
+
+            }
+        }
+    }
+
     private fun testingWeb() {
         val host = PreferenceManager.getDefaultSharedPreferences(this).getString("key_web_host", "8.8.8.8")
         val queue = Volley.newRequestQueue(this)
@@ -91,20 +105,19 @@ class MainActivity : AppCompatActivity() {
         queue.add(sRequest)
     }
 
-
     private fun testingLocal() {
         val host = PreferenceManager.getDefaultSharedPreferences(this).getString("key_local_url_sh", "192.168.1.200")
         val port = PreferenceManager.getDefaultSharedPreferences(this).getString("key_local_port", "2000")
         val queue = Volley.newRequestQueue(this)
         val url = "http://${host}:${port}/alex"
-        Log.d("MyLog", "url = $url")
+//        Log.d("MyLog", "url = $url")
         val sRequest = StringRequest(
             Request.Method.GET, url,
             { response ->
                 val ok = true
                 val items = TransferDataLocal(ok)
                 mViewModel.dataTransferLocal.value = items
-                Log.d("MyLog", response.toString())
+//                Log.d("MyLog", response.toString())
             },
             {
                 val nook = false
@@ -118,5 +131,28 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         timerWeb.cancel()
+    }
+
+
+    private fun botGetData() {
+        val token = PreferenceManager.getDefaultSharedPreferences(this).getString("key_token", "")
+        val channel_id = PreferenceManager.getDefaultSharedPreferences(this).getString("key_receiving", "")
+        val queue = Volley.newRequestQueue(this)
+        val url = "https://api.telegram.org/bot${token}/getUpdates?chat_id=${channel_id}&offset=-1"
+        val sRequest = StringRequest(
+            Request.Method.GET, url,
+            { response ->
+                val x = response
+//                Log.d("MyLog", "response: ${x}")
+               val items = TransferReceivedData(x)
+                mViewModel.dataReceived.value = items
+            },
+            {
+                val nook = false
+                val items = TransferData(nook)
+                mViewModel.dataTransferWeb.value = items
+            },
+        )
+        queue.add(sRequest)
     }
 }

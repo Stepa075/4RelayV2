@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="Transmitting chat ID"
+            android:title="Transmitting channel ID"
             app:icon="@drawable/ic_chats_id"
             app:key="key_transmitting" />
         <EditTextPreference
@@ -30,9 +30,18 @@
             android:layout_height="wrap_content"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="Receiving  chat ID"
+            android:title="Receiving  channel ID"
             app:icon="@drawable/ic_chats_id"
             app:key="key_receiving" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="15000"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            app:icon="@drawable/ic_update_time"
+            app:key="key_upd_time_rec_channel_poll"
+            app:title="Update time reciving channel poll" />
         <EditTextPreference
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

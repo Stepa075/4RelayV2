@@ -1,6 +1,7 @@
 package com.stepa0751.a4relayv2.fragments
 
 import android.annotation.SuppressLint
+import android.app.Application.ActivityLifecycleCallbacks
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,6 +19,8 @@ import com.stepa0751.a4relayv2.R
 import com.stepa0751.a4relayv2.databinding.FragmentMainBinding
 import com.stepa0751.a4relayv2.models.DataModel
 import com.stepa0751.a4relayv2.models.MainViewModel
+import org.json.JSONArray
+import org.json.JSONObject
 
 
 class MainFragment : Fragment() {
@@ -42,19 +45,20 @@ class MainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        mViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+//        requireActivity()
+        mViewModel = ViewModelProvider(activity as AppCompatActivity)[MainViewModel::class.java]
         setView()
         setOnClicks()
         onClicks()
         listenMainActivityWeb()
         listenMainActivityLocal()
+        listenChannelUpdate()
     }
 
 
     @SuppressLint("FragmentLiveDataObserve")
     fun setView() {
-        mViewModel.dataLiveData.observe(requireActivity(), Observer {
+        mViewModel.dataLiveData.observe(this, Observer {
             id1 = it.one
             id2 = it.two
             id3 = it.free
@@ -75,7 +79,7 @@ class MainFragment : Fragment() {
             } else {
                 binding.tvStatusWeb.text = getString(R.string.web_remote_status_is_no_connect)
             }
-            Log.d("MyLog", "$x")
+//            Log.d("MyLog", "$x")
         })
     }
 
@@ -91,9 +95,23 @@ class MainFragment : Fragment() {
                 binding.tvStatusWifi.text = getString(R.string.wifi_remote_status_is_no_connect)
                 localIsWork = false
             }
-            Log.d("MyLog", "Local:  $x")
+//            Log.d("MyLog", "Local:  $x")
         })
     }
+
+    @SuppressLint("FragmentLiveDataObserve")
+    fun listenChannelUpdate() {
+        mViewModel.dataReceived.observe(this, Observer {
+            val mainObject = JSONObject(it.data)
+            val jarray = mainObject.getJSONArray("result")
+            val mainArray = jarray[0] as JSONObject
+            val lastObject = mainArray.getJSONObject("channel_post").getString("text")
+            Log.d("MyLog", "Data from channel: ${lastObject}")
+
+
+        })
+    }
+
 
     override fun onPause() {
         super.onPause()
@@ -162,7 +180,7 @@ class MainFragment : Fragment() {
             id4 = !id4
         }
         val data =
-            "${if (id1) 1 else 0}:${if (id2) 1 else 0}:${if (id3) 1 else 0}:${if (id4) 1 else 0}"
+            "201_${if (id1) 1 else 0}:${if (id2) 1 else 0}:${if (id3) 1 else 0}:${if (id4) 1 else 0}"
 //        if (localIsWork) {
         webSettingDevice(data)
 //        }
@@ -230,7 +248,7 @@ class MainFragment : Fragment() {
         val sRequest = StringRequest(
             Request.Method.GET, url,
             { response ->
-                Log.d("MyLog", response.toString())
+//                Log.d("MyLog", response.toString())
             },
             {
                 Log.d("MyLog", "Error setting device")
