@@ -34,4 +34,7 @@
     <string name="other_settings">OTHER SETTINGS</string>
     <string name="internet_host_for_ping">Internet host for ping</string>
     <string name="choose_host_or_address_for_ping">Choose host or address for ping</string>
+    <string name="on_web_mode">On web mode</string>
+    <string name="web_mode_off">Web mode OFF</string>
+    <string name="web_mode_on">Web mode ON</string>
 </resources>

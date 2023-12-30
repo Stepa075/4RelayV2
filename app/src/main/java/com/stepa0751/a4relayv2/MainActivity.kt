@@ -1,7 +1,9 @@
 package com.stepa0751.a4relayv2
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.Preference
@@ -12,6 +14,7 @@ import com.android.volley.toolbox.Volley
 import com.stepa0751.a4relayv2.databinding.ActivityMainBinding
 import com.stepa0751.a4relayv2.fragments.MainFragment
 import com.stepa0751.a4relayv2.fragments.SettingsFragment
+import com.stepa0751.a4relayv2.models.LocalReceivedData
 import com.stepa0751.a4relayv2.models.MainViewModel
 import com.stepa0751.a4relayv2.models.TransferData
 import com.stepa0751.a4relayv2.models.TransferDataLocal
@@ -27,6 +30,8 @@ class MainActivity : AppCompatActivity() {
     private val timerWeb = Timer()
     private val timerLoc = Timer()
     private val timerPool = Timer()
+    private val localPool = Timer()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         myTimerWeb(timerWeb)
         myTimerLoc(timerLoc)
         myTimerChannelPool(timerPool)
+        myTimerLocalPool(localPool)
         openFragment(MainFragment.newInstance())
     }
 
@@ -84,6 +90,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    private fun myTimerLocalPool(timerPool: Timer) {
+        val period = PreferenceManager.getDefaultSharedPreferences(this).
+        getString("key_update_local_data", "5000")
+        if (period != null) {
+            timerPool.schedule(delay = 0, period = period.toLong()) {
+                localGetData()
+
+            }
+        }
+    }
 
     private fun testingWeb() {
         val host = PreferenceManager.getDefaultSharedPreferences(this).getString("key_web_host", "8.8.8.8")
@@ -117,7 +133,7 @@ class MainActivity : AppCompatActivity() {
                 val ok = true
                 val items = TransferDataLocal(ok)
                 mViewModel.dataTransferLocal.value = items
-//                Log.d("MyLog", response.toString())
+                Log.d("MyLog", response.toString())
             },
             {
                 val nook = false
@@ -131,6 +147,9 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         timerWeb.cancel()
+        timerLoc.cancel()
+        timerPool.cancel()
+        localPool.cancel()
     }
 
 
@@ -146,6 +165,7 @@ class MainActivity : AppCompatActivity() {
 //                Log.d("MyLog", "response: ${x}")
                val items = TransferReceivedData(x)
                 mViewModel.dataReceived.value = items
+
             },
             {
                 val nook = false
@@ -155,4 +175,32 @@ class MainActivity : AppCompatActivity() {
         )
         queue.add(sRequest)
     }
+
+
+    private fun localGetData() {
+        val host = PreferenceManager.getDefaultSharedPreferences(this).getString("key_local_url_sh", "192.168.1.200")
+        val port = PreferenceManager.getDefaultSharedPreferences(this).getString("key_local_port", "2000")
+        val queue = Volley.newRequestQueue(this)
+        val url = "http://${host}:${port}/data_response_to_client"
+        val sRequest = StringRequest(
+            Request.Method.GET, url,
+            { response ->
+                val x = response
+//                Log.d("MyLog", "response: ${x}")
+                val items = LocalReceivedData(x)
+                mViewModel.localDataReceived.value = items
+            },
+            {
+
+                val items = LocalReceivedData("error")
+                mViewModel.localDataReceived.value = items
+            },
+        )
+        queue.add(sRequest)
+    }
+
+
+
+
+
 }

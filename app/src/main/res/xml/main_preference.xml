@@ -62,6 +62,15 @@
         <EditTextPreference
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:defaultValue="5000"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Update time local data"
+            app:icon="@drawable/ic_update_time"
+            app:key="key_update_local_data" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:title="Update time ping local  to SmartHouse"

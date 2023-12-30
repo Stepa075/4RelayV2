@@ -9,4 +9,5 @@ class MainViewModel : ViewModel(){
     val dataTransferWeb = MutableLiveData<TransferData>()
     val dataTransferLocal = MutableLiveData<TransferDataLocal>()
     val dataReceived = MutableLiveData<TransferReceivedData>()
+    val localDataReceived = MutableLiveData<LocalReceivedData>()
 }
