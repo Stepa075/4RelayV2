@@ -28,6 +28,7 @@ import com.stepa0751.a4relayv2.databinding.FragmentMainBinding
 import com.stepa0751.a4relayv2.models.DataModel
 import com.stepa0751.a4relayv2.models.MainViewModel
 import com.stepa0751.a4relayv2.utils.showToast
+import com.stepa0751.a4relayv2.utils.vibratePhone
 import org.json.JSONObject
 
 
@@ -160,7 +161,7 @@ class MainFragment : Fragment() {
         })
     }
 
-    @SuppressLint("FragmentLiveDataObserve")
+    @SuppressLint("FragmentLiveDataObserve", "SetTextI18n")
     fun listenChannelUpdate() {
         mViewModel.dataReceived.observe(this, Observer {
             if (it.data != "error") {
@@ -182,19 +183,20 @@ class MainFragment : Fragment() {
                 Log.d("MyLog", "Data from web channel 3: $value3")
                 Log.d("MyLog", "Data from web channel 3: $value4")
                 changeWebButtonState(value1, value2, value3, value4)
-
+                binding.tvResponse3.text = ""
             } else {
                 val value1 = 1
                 val value2 = 1
                 val value3 = 1
                 val value4 = 1
                 changeWebButtonState(value1, value2, value3, value4)
+                binding.tvResponse3.text = "ERROR!!!"
             }
 
         })
     }
 
-    @SuppressLint("FragmentLiveDataObserve")
+    @SuppressLint("FragmentLiveDataObserve", "SetTextI18n")
     fun listenLocalUpdate() {
         mViewModel.localDataReceived.observe(this, Observer {
             if (it.data != "error") {
@@ -216,12 +218,14 @@ class MainFragment : Fragment() {
                 Log.d("MyLog", "Data from local channel 3: $value3")
                 Log.d("MyLog", "Data from local channel 3: $value4")
                 changeButtonState(value1, value2, value3, value4)
+                binding.tvResponse.text = ""
             } else {
                 val value1 = 1
                 val value2 = 1
                 val value3 = 1
                 val value4 = 1
                 changeButtonState(value1, value2, value3, value4)
+                binding.tvResponse.text = "ERROR!!!"
             }
 
         })
@@ -254,14 +258,45 @@ class MainFragment : Fragment() {
     private fun onClicks(): View.OnClickListener {
         return View.OnClickListener {
             when (it.id) {
-                R.id.br1 -> definePressedButtonLocal(1)
-                R.id.br2 -> definePressedButtonLocal(2)
-                R.id.br3 -> definePressedButtonLocal(3)
-                R.id.br4 -> definePressedButtonLocal(4)
-                R.id.br8 -> definePressedButtonWeb(5)
-                R.id.br9 -> definePressedButtonWeb(6)
-                R.id.br10 -> definePressedButtonWeb(7)
-                R.id.br11 -> definePressedButtonWeb(8)
+                R.id.br1 -> {
+                    definePressedButtonLocal(1)
+                    vibratePhone()
+                }
+
+                R.id.br2 -> {
+                    definePressedButtonLocal(2)
+                    vibratePhone()
+                }
+
+                R.id.br3 -> {
+                    definePressedButtonLocal(3)
+                    vibratePhone()
+                }
+
+                R.id.br4 -> {
+                    definePressedButtonLocal(4)
+                    vibratePhone()
+                }
+
+                R.id.br8 -> {
+                    definePressedButtonWeb(5)
+                    vibratePhone()
+                }
+
+                R.id.br9 -> {
+                    definePressedButtonWeb(6)
+                    vibratePhone()
+                }
+
+                R.id.br10 -> {
+                    definePressedButtonWeb(7)
+                    vibratePhone()
+                }
+
+                R.id.br11 -> {
+                    definePressedButtonWeb(8)
+                    vibratePhone()
+                }
             }
         }
     }
@@ -429,8 +464,7 @@ class MainFragment : Fragment() {
 
 
     companion object {
-        const val NOTIFICATION_ID = 101
-        const val CHANNEL_ID = "channelID"
+
         @JvmStatic
         fun newInstance() = MainFragment()
     }

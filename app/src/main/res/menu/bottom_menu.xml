@@ -4,8 +4,20 @@
         android:icon="@drawable/ic_home_bottom_menu"
         android:id="@+id/id_home"
         android:orderInCategory="100"/>
+    <item android:title="@string/relays"
+        android:icon="@drawable/ic_relays"
+        android:id="@+id/id_relays"
+        android:orderInCategory="200"/>
     <item android:title="@string/settings"
         android:icon="@drawable/ic_settings_bottom_menu"
         android:id="@+id/id_settings"
         android:orderInCategory="300"/>
+    <item android:title="@string/meteo"
+        android:icon="@drawable/ic_meteo"
+        android:id="@+id/id_meteo"
+        android:orderInCategory="400"/>
+    <item android:title="@string/technics"
+        android:icon="@drawable/ic_tech"
+        android:id="@+id/id_tech"
+        android:orderInCategory="500"/>
 </menu>

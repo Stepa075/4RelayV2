@@ -13,7 +13,10 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.stepa0751.a4relayv2.databinding.ActivityMainBinding
 import com.stepa0751.a4relayv2.fragments.MainFragment
+import com.stepa0751.a4relayv2.fragments.MeteoFragment
 import com.stepa0751.a4relayv2.fragments.SettingsFragment
+import com.stepa0751.a4relayv2.fragments.StartFragment
+import com.stepa0751.a4relayv2.fragments.TechFragment
 import com.stepa0751.a4relayv2.models.LocalReceivedData
 import com.stepa0751.a4relayv2.models.MainViewModel
 import com.stepa0751.a4relayv2.models.TransferData
@@ -43,16 +46,18 @@ class MainActivity : AppCompatActivity() {
         myTimerLoc(timerLoc)
         myTimerChannelPool(timerPool)
         myTimerLocalPool(localPool)
-        openFragment(MainFragment.newInstance())
+        openFragment(StartFragment.newInstance())
     }
 
 
     private fun onBottomNavClicks() {
         binding.bNav.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.id_home -> openFragment(MainFragment.newInstance())
-
+                R.id.id_home-> openFragment(StartFragment.newInstance())
+                R.id.id_relays -> openFragment(MainFragment.newInstance())
                 R.id.id_settings -> openFragment(SettingsFragment())
+                R.id.id_meteo-> openFragment(MeteoFragment.newInstance())
+                R.id.id_tech-> openFragment(TechFragment.newInstance())
             }
             true
         }

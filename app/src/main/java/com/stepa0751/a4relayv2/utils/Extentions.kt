@@ -1,5 +1,9 @@
 package com.stepa0751.a4relayv2.utils
 
+import android.content.Context
+import android.os.Build
+import android.os.VibrationEffect.*
+import android.os.Vibrator
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -42,6 +46,16 @@ fun Fragment.myLog(v:String){
 
 fun AppCompatActivity.myMyLog(v:String){
     Log.d("MyLog", v)
+}
+
+@Suppress("DEPRECATION")
+fun Fragment.vibratePhone() {
+    val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+    if (Build.VERSION.SDK_INT >= 26) {
+        vibrator.vibrate(createOneShot(200, DEFAULT_AMPLITUDE))
+    } else {
+        vibrator.vibrate(200)
+    }
 }
 
 

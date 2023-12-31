@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.stepa0751.a4relayv2.R
 
 
-class StartFragment : Fragment() {
+class TechFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,12 +20,13 @@ class StartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return inflater.inflate(R.layout.fragment_start, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_tech, container, false)
     }
 
     companion object {
+
         @JvmStatic
-        fun newInstance() = StartFragment()
+        fun newInstance() = TechFragment()
     }
 }
