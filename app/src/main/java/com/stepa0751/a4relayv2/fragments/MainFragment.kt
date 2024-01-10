@@ -160,30 +160,39 @@ class MainFragment : Fragment() {
 //            Log.d("MyLog", "Local:  $x")
         })
     }
-
+//    Посмотреть как можно улучшить проверку на пустой массив JSONArray in 170 line
     @SuppressLint("FragmentLiveDataObserve", "SetTextI18n")
     fun listenChannelUpdate() {
         mViewModel.dataReceived.observe(this, Observer {
             if (it.data != "error") {
-                val mainObject = JSONObject(it.data)
-                val jarray = mainObject.getJSONArray("result")
-                val mainArray = jarray[0] as JSONObject
-                val lastObject = mainArray.getJSONObject("channel_post").getString("text")
-                val strObj = JSONObject(lastObject)
-                val data = strObj.getString("201")
-                val value1 = data.substringBefore(':').toInt()
-                val value2 =
-                    data.substringAfter(':').substringBefore(':').substringBefore(':').toInt()
-                val value3 = data.substringAfter(':').substringAfter(':').substringBefore('.')
-                    .substringBeforeLast(':').toInt()
-                val value4 = data.substringAfterLast(':').toInt()
-                Log.d("MyLog", "Data from web channel : $data")
-                Log.d("MyLog", "Data from web channel 1: $value1")
-                Log.d("MyLog", "Data from web channel 2: $value2")
-                Log.d("MyLog", "Data from web channel 3: $value3")
-                Log.d("MyLog", "Data from web channel 3: $value4")
-                changeWebButtonState(value1, value2, value3, value4)
-                binding.tvResponse3.text = ""
+                try {
+                    val mainObject = JSONObject(it.data)
+                    val jarray = mainObject.getJSONArray("result")
+                    val mainArray = jarray[0] as JSONObject
+                    val lastObject = mainArray.getJSONObject("channel_post").getString("text")
+                    val strObj = JSONObject(lastObject)
+                    val data = strObj.getString("201")
+                    val value1 = data.substringBefore(':').toInt()
+                    val value2 =
+                        data.substringAfter(':').substringBefore(':').substringBefore(':').toInt()
+                    val value3 = data.substringAfter(':').substringAfter(':').substringBefore('.')
+                        .substringBeforeLast(':').toInt()
+                    val value4 = data.substringAfterLast(':').toInt()
+                    Log.d("MyLog", "Data from web channel : $data")
+                    Log.d("MyLog", "Data from web channel 1: $value1")
+                    Log.d("MyLog", "Data from web channel 2: $value2")
+                    Log.d("MyLog", "Data from web channel 3: $value3")
+                    Log.d("MyLog", "Data from web channel 3: $value4")
+                    changeWebButtonState(value1, value2, value3, value4)
+                    binding.tvResponse3.text = ""
+                } catch (e: Exception) {
+                    val value1 = 1
+                    val value2 = 1
+                    val value3 = 1
+                    val value4 = 1
+                    changeWebButtonState(value1, value2, value3, value4)
+                    binding.tvResponse3.text = "ERROR!!!"
+                }
             } else {
                 val value1 = 1
                 val value2 = 1
