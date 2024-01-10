@@ -39,4 +39,5 @@
     <string name="web_mode_on">Web mode ON</string>
     <string name="technics">Technics</string>
     <string name="meteo">Meteo</string>
+    <string name="error_accept_information">ERROR ACCEPT INFORMATION!!!</string>
 </resources>

@@ -14,6 +14,7 @@
     <color name="app_bar_color">#144DA1</color>
     <color name="non_accent_black">#323335</color>
     <color name="background_color">#117AEA</color>
+    <color name="background_color_transparent">#BCC6D2DD</color>
     <color name="bottom_navigation_bar_color">#117AEA</color>
     <color name="bottom_menu_background_color">#0C31B4</color>
 </resources>

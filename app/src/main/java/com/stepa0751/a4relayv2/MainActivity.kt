@@ -64,6 +64,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
     private fun myTimerLoc(timerLoc: Timer) {
         val period = PreferenceManager.getDefaultSharedPreferences(this).
         getString("key_upd_time_local", "30000")

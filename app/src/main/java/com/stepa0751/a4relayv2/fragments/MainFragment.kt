@@ -191,7 +191,8 @@ class MainFragment : Fragment() {
                     val value3 = 1
                     val value4 = 1
                     changeWebButtonState(value1, value2, value3, value4)
-                    binding.tvResponse3.text = "ERROR!!!"
+                    binding.tvResponse3.text = getString(R.string.error_accept_information)
+
                 }
             } else {
                 val value1 = 1
@@ -199,7 +200,8 @@ class MainFragment : Fragment() {
                 val value3 = 1
                 val value4 = 1
                 changeWebButtonState(value1, value2, value3, value4)
-                binding.tvResponse3.text = "ERROR!!!"
+                binding.tvResponse3.text = getString(R.string.error_accept_information)
+
             }
 
         })

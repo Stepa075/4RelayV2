@@ -9,6 +9,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.stepa0751.a4relayv2.R
+import com.stepa0751.a4relayv2.databinding.FragmentStartBinding
+import com.stepa0751.a4relayv2.fragments.MainFragment
+import com.stepa0751.a4relayv2.fragments.MeteoFragment
+import com.stepa0751.a4relayv2.fragments.SettingsFragment
+import com.stepa0751.a4relayv2.fragments.StartFragment
+import com.stepa0751.a4relayv2.fragments.TechFragment
 
 fun Fragment.openFragment(f: Fragment) {
     (activity as AppCompatActivity).supportFragmentManager
@@ -59,6 +65,10 @@ fun Fragment.vibratePhone() {
 }
 
 
+
+
+
+ 
 
 
 
